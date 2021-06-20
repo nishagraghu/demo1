@@ -1,0 +1,86 @@
+<div class="continer mt-4">
+    <div class="row">
+        <div class="col-2">
+        </div>
+        <div class="col-8 ">
+            <form #f='ngForm' (submit)="submit(f)">
+                <div ngModelGroup="name" class="row">
+
+
+                    <div class="col-4">
+                        <label for="exampleInputEmail1" id="fname">
+                            Fist Name
+                        </label>
+                        <input type="text" ngModel required minlength="3" maxlength="69" name="fname" #fname="ngModel"
+                            (change)="log(fname)" class="form-control" />
+                    </div>
+                    <div class="col-4">
+                        <label for="exampleInputEmail1" id="sname">
+                            Second Name
+                        </label>
+                        <input type="text" ngModel maxlength="69" name="sname" #sname="ngModel" (change)="log(sname)"
+                            class="form-control" />
+                    </div>
+                    <div class="col-4">
+                        <label for="exampleInputEmail1" id="lname">
+                            Last Name
+                        </label>
+                        <input type="text" ngModel maxlength="69" name="lname" #lname="ngModel" (change)="log(lname)"
+                            class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1" id="email">
+                        Email address
+                    </label>
+                    <input type="text" ngModel required minlength="3" maxlength="69" name="email" #email="ngModel"
+                        (change)="log(email)" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        placeholder="Enter email">
+
+                    <small id="emailHelp" class="form-text text-muted " *ngIf="email.touched&&email.errors">
+                        <ul>
+                            <li *ngIf="email.errors.required">
+                                Emaike is required
+                            </li>
+                            <li *ngIf="email.errors.minlength">
+                                Minimem length should be grater then
+                                {{email.errors.minlength.requiredLength}} current length is only
+                                {{email.errors.minlength.actualLength}}
+                            </li>
+                        </ul>
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">
+                        Password
+                    </label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                </div>
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1" ngModel='true' name="check">
+                    <label class="form-check-label" for="exampleCheck1">
+                        Check me out
+                    </label>
+                </div>
+                <div class="form-group form-check">
+                    <select id="cars"  multiple ngModel="volvo"  name="select" >
+                        <option value="volvo" >Volvo</option>
+                        <option value="saab">Saab</option>
+                        <option value="vw">VW</option>
+                        <option value="audi" >Audi</option>
+                    </select>
+                </div>
+                <input type="radio" ngModel id="male" name="gender" value="male">
+  <label for="male">Male</label><br>
+  <input type="radio" ngModel id="female" name="gender" value="female">
+  <label for="female" >Female</label><br>
+  <input type="radio" id="other" ngModel name="gender" value="other">
+  <label for="other">Other</label>
+                <button type="submit" class="btn btn-primary">
+                    Submit
+                </button>
+                {{f.value | json}}
+            </form>
+        </div>
+    </div>
+</div>
